@@ -1,9 +1,15 @@
 class CommentsController < ApplicationController
+	def new
+		@article = Article.find(params[:article_id])
+		@comment = Comment.new
+	end
 	def create
 		@article = Article.find(params[:article_id])
 		@comment = @article.comments.create(comment_params)
 		if @comment.save
 			redirect_to article_path(@article)
+		else
+			render "edit"
 		end
 	end
 	def destroy
@@ -13,7 +19,6 @@ class CommentsController < ApplicationController
 		redirect_to article_path(@article)
 	end
 	def edit
-		puts params
 		@article = Article.find(params[:article_id])
 		@comment = @article.comments.find(params[:id])
 	end
