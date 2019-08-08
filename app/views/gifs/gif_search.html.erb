@@ -1,0 +1,9 @@
+<h1> Ready to Search for GIFS? </h1>
+
+<%= form_tag("/posts") do %>
+  <%= label_tag(:q, "What GIF are you looking for?") %>
+  <br>
+	  <%= text_field_tag(:q) %>
+	  <%= submit_tag("Search") %>
+	</br>
+<% end %>
